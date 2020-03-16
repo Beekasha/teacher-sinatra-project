@@ -1,4 +1,4 @@
 class Student < ActiveRecord::Base
-    has_many :teachers
+    has_and_belongs_to_many :teachers
     has_many :reviews
 end
