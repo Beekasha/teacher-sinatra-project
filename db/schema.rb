@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200316043758) do
+ActiveRecord::Schema.define(version: 20200316174453) do
+
+  create_table "klasses", force: :cascade do |t|
+    t.string  "name"
+    t.integer "period"
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.text    "content"
