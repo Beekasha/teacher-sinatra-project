@@ -3,6 +3,11 @@ class TeachersController < ApplicationController
         erb :"teachers/signup"
     end
 
+
+    get '/login' do
+        erb :'teachers/login'
+    end
+
     post '/teachers' do 
         @teacher = Teacher.new
         @teacher.username = params[:username]
@@ -14,3 +19,4 @@ class TeachersController < ApplicationController
         end
     end
 end
+
