@@ -11,10 +11,12 @@ class TeachersController < ApplicationController
         @teacher.username = params[:username]
         @teacher.password = params[:password]
         if @teacher.save
-            redirect 'sessions/login'
+            redirect '/login'
         else
             erb :"teachers/signup"
         end
     end
+
+    
 end
 
