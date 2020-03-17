@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
-    has_many :klasses
+    belongs_to :klasses_students
+    # has_many :teachers
     has_many :reviews
-    has_and_belongs_to_many :teachers, through: :klasses
+    has_many :klasses, through: :klasses_students
     
 end

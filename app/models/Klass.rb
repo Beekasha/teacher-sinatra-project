@@ -1,6 +1,7 @@
 class Klass < ActiveRecord::Base
-    has_many :students
+    belongs_to :klasses_students, polymorphic: true
     belongs_to :teacher
+    has_many :students, through: :klasses_students
     
 
     
