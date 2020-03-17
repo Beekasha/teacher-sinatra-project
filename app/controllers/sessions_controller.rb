@@ -4,13 +4,14 @@ class SessionsController < ApplicationController
     end
 
     post "/login" do
-        @user = Teacher.find_by(username: params[:username])
-        if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            redirect to "/account"
-        else
-            redirect to "sessions/failure"
-        end
+        login
+        # @user = Teacher.find_by(username: params[:username])
+        # if @user && @user.authenticate(params[:password])
+        #     session[:user_id] = @user.id
+        #     redirect to "/account"
+        # else
+        #     redirect to "/failure"
+        # end
     end
 
     post '/sessions' do
@@ -21,5 +22,9 @@ class SessionsController < ApplicationController
     get '/logout' do
         logout!
         redirect to '/'
+    end
+
+    get '/failure' do
+        erb :'sessions/failure'
     end
 end

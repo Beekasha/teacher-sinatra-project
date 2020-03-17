@@ -29,13 +29,12 @@ class ApplicationController < Sinatra::Base
     end
 
     def login(username, password)
-      #check if a user with this username actually exists
-      #if so, set the session 
       user = Teacher.find_by(:username => username)
       if user && user.authenticate(password)
         session[:username] = user.username
+        redirect to '/account'
       else 
-        redirect '/login'
+        redirect '/failure'
       end
     end
 

@@ -17,6 +17,9 @@ class TeachersController < ApplicationController
         end
     end
 
+    get '/account' do
+        erb :'teachers/account'
+    end
     
 end
 
