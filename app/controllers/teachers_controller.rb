@@ -6,14 +6,14 @@ class TeachersController < ApplicationController
 
 
 
-    post '/teachers' do 
+    post '/signup' do 
         @teacher = Teacher.new
         @teacher.username = params[:username]
         @teacher.password = params[:password]
         if @teacher.save
             redirect '/login'
         else
-            erb :"teachers/signup"
+            erb :"sessions/failure"
         end
     end
 
