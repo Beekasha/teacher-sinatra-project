@@ -1,7 +1,7 @@
 5.times do #creating 5 teachers
     fake_name = Faker::Name.name
     fake_email = Faker::Internet.email
-    fake_password = Faker::Space.constellation
+    fake_password = "password"
     Teacher.create(name: fake_name, username: fake_email, password: fake_password)
 end
 
@@ -21,8 +21,7 @@ Teacher.all.each do |t|
   period = rand(1..12)
   teacher_id = t.id
   max = Student.all.count
-  student_id = rand(1..max)
-  Klass.create(name: name, period: period, teacher_id: teacher_id, student_id: student_id)
+  Klass.create(name: name, period: period, teacher_id: teacher_id)
 end
 
 # 5.times do #create klasses
