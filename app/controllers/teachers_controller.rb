@@ -22,7 +22,11 @@ class TeachersController < ApplicationController
     end
 
     get '/account' do
-        erb :'teachers/account'
+        if logged_in?
+            erb :'teachers/account'
+        else
+            erb :"sessions/failure"
+        end
     end
     
 end
