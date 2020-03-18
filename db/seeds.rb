@@ -24,6 +24,17 @@ Teacher.all.each do |t|
   Klass.create(name: name, period: period, teacher_id: teacher_id)
 end
 
+Klass.all.each do |k|
+  20.times do
+    klass_id = k.id
+    student_id = rand(1..Student.all.count)
+    KlassesStudents.create(klass_id: klass_id, student_id: student_id)
+  end
+end
+
+
+
+
 # 5.times do #create klasses
 #     name = Faker::Educator.course_name
 #     period = rand(1..12)
