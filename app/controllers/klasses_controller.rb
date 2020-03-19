@@ -15,13 +15,7 @@ class KlassesController < ApplicationController
     end
 
 
-    
-    def slug
-        name.downcase.gsub(" ","-")
-    end
 
-    def self.find_by_slug(slug)
-        Klass.all.find{|k| k.slug == slug}
-    end
+
 
 end
