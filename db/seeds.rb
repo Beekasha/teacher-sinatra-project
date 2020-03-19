@@ -1,3 +1,5 @@
+@student_counter = 1
+
 5.times do #creating 5 teachers
     fake_name = Faker::Name.name
     fake_email = Faker::Internet.email
@@ -10,8 +12,8 @@ end
 
 Teacher.all.each do |t| 
 
-  20.times do #creating 20 students p/teacher
-    name = Faker::Name.name
+  20.times do #creating 20 students p/teacher 
+    name = Faker::Name.unique.name
     grade = rand(1..12)
    
     Student.create(name: name, grade: grade)
@@ -25,24 +27,28 @@ Teacher.all.each do |t|
   end
 end
 
-Klass.all.each do |k|
+Klass.all.each do |k| #gives each klass 20 students
   20.times do
     klass_id = k.id
-    student_id = rand(1..Student.all.count)
+
+    if @student_counter <= Student.all.count
+      student_id = @student_counter #uniq problem is here
+    else
+      @student_counter = 1 #stops student_id from going over student.count
+      student_id = @student_counter
+    end
+
     KlassesStudents.create(klass_id: klass_id, student_id: student_id)
+    @student_counter += 1 #stops student redundancy in class
   end
+  
 end
 
 
 
 
-# 5.times do #create klasses
-#     name = Faker::Educator.course_name
-#     period = rand(1..12)
-#     # teacher_id
-#     # student_id
-#     Klass.create(name:, period:, teacher_id:, student_id:)
-# end
+
+
 
 # Create student reviews
 # Student.all.each do |s|

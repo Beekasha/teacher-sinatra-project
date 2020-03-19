@@ -1,9 +1,13 @@
 <h2> Here are your students, <%= current_user.name.split(" ").first.capitalize %></h2>
-<p>
+<p> 
 <% current_user.students.each do |s| %>
-  <div>
+ 
+
+  <p> 
+
     <%= s.name %>
-  </div>
-  
+  </p>
 <% end %>
-<a href="/account">Go Home</a><br>
+ 
+  
+
