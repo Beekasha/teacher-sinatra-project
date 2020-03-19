@@ -7,4 +7,6 @@ class StudentsController < ApplicationController
     #     # @student_name = params[:student_name]
     #     redirect to '/individual_reviews'
     # end
+
+
 end
