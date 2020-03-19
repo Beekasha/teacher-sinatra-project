@@ -3,8 +3,8 @@ class StudentsController < ApplicationController
         erb :"students/show"
     end
 
-    post '/students' do
-        @student_name = params[:student_name]
-        redirect to '/individual_reviews'
-    end
+    # post '/students' do
+    #     # @student_name = params[:student_name]
+    #     redirect to '/individual_reviews'
+    # end
 end
