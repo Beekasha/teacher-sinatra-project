@@ -4,10 +4,15 @@
  
 
   <p> 
-
     <%= s.name %>
   </p>
 <% end %>
+<br>
+<form action='/individual_reviews' method=POST>
+  <label for="student_name">Enter Student Name:</label><br>
+  <input type="text" id="student_name" name="student_name"><br><br>
+  <input type="submit" value="Submit">
+</form>
  
   
 

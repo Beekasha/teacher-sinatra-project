@@ -2,8 +2,12 @@
 <p>
 <% current_user.klasses.each do |k| %>
   <div>
-    <%= k.name %>
+    <a href="/classroom"><%= k.name %></a>
   </div>
 <% end %><br>
 <a href="/account">Go Home</a><br>
 </p>
+
+
+
+
