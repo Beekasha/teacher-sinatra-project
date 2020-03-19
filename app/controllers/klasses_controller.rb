@@ -10,7 +10,8 @@ class KlassesController < ApplicationController
         
     end
 
-    get '/classroom' do
+    get '/classroom/:slug' do
+        @klass = Klass.find_by_slug(params[:slug])
         erb :'klasses/classroom'
     end
 
