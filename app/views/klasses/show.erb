@@ -2,7 +2,7 @@
 <p>
 <% current_user.klasses.each do |k| %>
   <div>
-    <a href="/classroom"><%= k.name %></a>
+    <a href="/classroom/<%= k.name.parameterize %>"><%= k.name %></a> 
   </div>
 <% end %><br>
 <a href="/account">Go Home</a><br>
