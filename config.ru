@@ -8,6 +8,7 @@ end
 
 use SessionsController
 use StudentsController
+use KlassesController
 use ReviewsController
 use TeachersController
 run ApplicationController
