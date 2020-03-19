@@ -1,18 +1,12 @@
-<h2> Here are your students, <%= current_user.name.split(" ").first.capitalize %></h2>
-<p> 
-<% current_user.students.sort_by{|student| student.name}.each do |s| %>
- 
 
-  <p> 
-    <%= s.name %>
-  </p>
-<% end %>
-<br>
-<form action='/individual_reviews' method=POST>
-  <label for="student_name">Enter Student Name:</label><br>
-  <input type="text" id="student_name" name="student_name"><br><br>
-  <input type="submit" value="Submit">
-</form>
  
-  
+<h2> Here are your students, <%= current_user.name.split(" ").first.capitalize %></h2>
+<p>
+<% current_user.students.sort_by{|student| student.name}.each do |s| %>
+  <div>
+    <a href="/students/<%= s.slug %>"><%= s.name %></a> 
+  </div>
+<% end %><br>
+<a href="/account">Go Home</a><br>
+</p>
 
