@@ -17,11 +17,12 @@ Teacher.all.each do |t|
     Student.create(name: name, grade: grade)
   end
 
-  name = Faker::Educator.course_name #create klasses
-  period = rand(1..12)
-  teacher_id = t.id
-  max = Student.all.count
-  Klass.create(name: name, period: period, teacher_id: teacher_id)
+  5.times do #creating 5 classes per teacher
+    name = Faker::Educator.course_name #create klasses
+    period = rand(1..12)
+    teacher_id = t.id
+    Klass.create(name: name, period: period, teacher_id: teacher_id)
+  end
 end
 
 Klass.all.each do |k|
