@@ -1,0 +1,7 @@
+<h2> Here are your students, <%= current_user.name.split(" ").first.capitalize %></h2>
+<p>
+<% current_user.students.each do |s| %>
+  <div>
+    <%= s.name %>
+  </div>
+<% end %>
