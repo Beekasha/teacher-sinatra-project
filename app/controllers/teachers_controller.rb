@@ -28,6 +28,11 @@ class TeachersController < ApplicationController
             erb :"sessions/failure"
         end
     end
+
+
+    get '/classes' do
+        erb :'klasses/show'
+    end
     
 end
 
