@@ -1,2 +1,8 @@
 <h2>Main Page w All Reviews(of relevant students)</h2>
 
+
+<% current_user.reviews.each do |r| %>
+    <li> <%= r.content %> </li>
+    <li> Educator: <%= r.teacher.name %></li>
+    <li> Student: <%= r.student.name %></li> <br>
+<% end %>
