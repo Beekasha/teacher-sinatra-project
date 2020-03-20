@@ -17,7 +17,8 @@ class ReviewsController < ApplicationController
             if params[:content] == ""
                 redirect to "/reviews/new"
             else
-                @review = current_user.reviews.build(content: params[:content], student_id: params[:students]) #need to get student choice
+
+                @review = current_user.reviews.build(content: params[:content], student_id: params[:student_id]) #need to get student choice
                 if @review.save
                     redirect to "/reviews"
                 else

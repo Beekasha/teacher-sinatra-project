@@ -2,10 +2,10 @@
 <form action="/reviews" method="POST">
   <p>Review: <input type="text" name="content"></p>
 
-  <label for="students">Choose a student:</label>
-    <select id="students" name="students">
+  <label for="student_id">Choose a student:</label>
+    <select id="student_id" name="student_id">
         <% current_user.students.sort_by {|student| student.name}.each do |s| %>
-            <option value=<% s.id %>> <%= s.name %> </option>
+            <option value="<% s.id %>" > <%= s.name %> </option>
         <% end %>
 
     </select>
