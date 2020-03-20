@@ -1,2 +1,11 @@
 <h2>Welcome to the Homepage for <%= @klass.name %>!</h2>
 
+<h2> <%= @klass.teacher.name %>'s Students: </h2>
+
+<% @klass.student.each do |s| %>
+    <p>
+        <div>
+            <a href="/students/<%= s.slug %>"><%= s.name %></a> 
+        </div>
+    </p>
+<% end %>
