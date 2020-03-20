@@ -10,9 +10,7 @@ class TeachersController < ApplicationController
         if params[:username] == "" || params[:name] == "" || params[:password] = ""
             redirect to '/signup'
         else
-            @teacher = Teacher.new
-            @teacher.username = params[:username]
-            @teacher.password = params[:password]
+            @teacher = Teacher.new(:name => params[:name], :username => params[:username], :password => params[:password])
             if @teacher.save
                 redirect '/login'
             else

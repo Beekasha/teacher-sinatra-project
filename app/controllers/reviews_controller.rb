@@ -8,5 +8,9 @@ class ReviewsController < ApplicationController
         erb :'reviews/individual'
     end
 
+    get '/reviews/new' do
+        erb :'reviews/new'
+    end
+
 
 end
