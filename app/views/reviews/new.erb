@@ -1,5 +1,20 @@
 <h2>New Review</h2>
 <form action="/reviews" method="POST">
-  <p>Status: <input type="text" name="content"></p>
-  <input class="btn btn-primary" type="submit" value="submit">
+  <p>Review: <input type="text" name="content"></p>
+
+  <label for="students">Choose a student:</label>
+    <select id="students" name="students">
+        <% current_user.students.sort_by {|student| student.name}.each do |s| %>
+            <option value=<% s.id %>> <%= s.name %> </option>
+        <% end %>
+
+    </select>
+  <input class="btn btn-primary" type="submit" value="submit"><br>
 </form>
+
+
+
+
+
+<a href="/account">Go Home</a><br>
+

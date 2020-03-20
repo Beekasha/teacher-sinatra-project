@@ -12,5 +12,22 @@ class ReviewsController < ApplicationController
         erb :'reviews/new'
     end
 
+    post '/reviews' do
+        if logged_in?
+            if params[:content] == ""
+                redirect to "/reviews/new"
+            else
+                @review = current_user.reviews.build(content: params[:content], student_id: params[:students]) #need to get student choice
+                if @review.save
+                    redirect to "/reviews"
+                else
+                    redirect to "/reviews/new"
+                end
+            end
+        else
+        redirect to '/login'
+        end
+    end
+
 
 end
