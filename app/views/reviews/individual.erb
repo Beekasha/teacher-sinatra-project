@@ -1,12 +1,13 @@
 
 <h2> Notes about <%= @student.name %> </h2>
 
-<p>
+
     <% if @student.reviews.empty? %>
-        This student does not have any reviews
+        <h4> This student does not have any reviews </h4>
     <% else %>
+        <ul>
         <% @student.reviews.each do |r| %>
-            <%= r.content %><br>
+                <li> <%= r.content %> </li> <br>
         <% end %>
+        </ul>
     <% end %>
-</p>
