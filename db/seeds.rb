@@ -1,4 +1,4 @@
-@student_counter = 1
+
 
 5.times do #creating 5 teachers
     fake_name = Faker::Name.name
@@ -27,6 +27,7 @@ Teacher.all.each do |t|
   end
 end
 
+@student_counter = 1
 Klass.all.each do |k| #gives each klass 20 students
   20.times do
     klass_id = k.id
@@ -51,11 +52,10 @@ end
 
 
 # Create student reviews
-# Student.all.each do |s|
-#   3.times do
-#     review = Faker::Movies::BackToTheFuture.quote
-#     t = Teacher.find_by(id: s.teacher_id)
-#     book = t.books[rand(t.books.length)]
-#     Review.create(rating: rating, review: review, student_id: s.id, book_id: book.id)
-#   end
-# end
+Teacher.all.each do |t|
+  10.times do
+    review = Faker::Movies::BackToTheFuture.quote
+    Review.create(content: review, student_id: (rand(1..Student.all.count)), teacher_id: t.id)
+  end
+end
+
