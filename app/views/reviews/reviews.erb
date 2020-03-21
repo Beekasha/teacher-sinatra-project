@@ -1,10 +1,16 @@
 <h2>Main Page w All Reviews(of relevant students)</h2>
 
 
-<% current_user.students.each do |s| %>
-    <% s.reviews.each do |r| %>
+
+<% revs = Review.all.sort_by{|review| review.created_at}.reverse  %>
+<% revs.each do |r| %>
+    <% if current_user.students.include?(r.student) %>
         <li> <%= r.content %> </li>
         <li> Educator: <%= r.teacher.name %></li>
         <li> Student: <%= r.student.name %></li> <br>
+    <% else %>
+        <br>
     <% end %>
 <% end %>
+
+
