@@ -1,7 +1,7 @@
 class AddTimestampsToReviews < ActiveRecord::Migration
   def change
     change_table :reviews do |t|
-      t.timestamps :nil => false
+      t.timestamps
     end
     
   end

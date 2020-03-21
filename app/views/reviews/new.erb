@@ -1,14 +1,8 @@
 <h2>New Review</h2>
 <form action="/reviews" method="POST">
   <p>Review: <input type="text" name="content"></p>
+  <p>Student's Name: <input type="text" name="student_name"></p>
 
-  <label for="student_id">Choose a student:</label>
-    <select id="student_id" name="student_id">
-        <% current_user.students.sort_by {|student| student.name}.each do |s| %>
-            <option value="<% s.id %>" > <%= s.name %> </option>
-        <% end %>
-
-    </select>
   <input class="btn btn-primary" type="submit" value="submit"><br>
 </form>
 
