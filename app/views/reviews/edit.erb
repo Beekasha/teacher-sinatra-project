@@ -1,0 +1,8 @@
+<h2> Edit Review Page </h2>
+
+<% current_user.reviews.each do |r| %>
+    <br>
+    <li> <%= r.content %> </li>
+    <li> Student: <%= r.student.name %></li> 
+    <li> Review ID: <%= r.id %> </li> <br>
+<% end %>

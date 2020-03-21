@@ -32,5 +32,10 @@ class ReviewsController < ApplicationController
         end
     end
 
+    get '/reviews/edit' do
+        erb :'reviews/edit'
+    end
+
+
 
 end
