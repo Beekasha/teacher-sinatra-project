@@ -28,6 +28,10 @@ class ApplicationController < Sinatra::Base
       @current_user ||= Teacher.find_by(:username => session[:username]) if session[:username]
     end
 
+    def current_klass
+      @current_klass ||= Klass.find_by()
+    end
+
     def login(username, password)
       user = Teacher.find_by(:username => username)
       if user && user.authenticate(password)
