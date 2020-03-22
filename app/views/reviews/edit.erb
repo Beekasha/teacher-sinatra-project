@@ -1,15 +1,12 @@
 <h2> Edit Review Page </h2>
 
-<h4> What is the Review ID of the Review you would like to edit? </h4>
-<form action="/reviews/editing" method="POST">
-  <p>Review ID: <input type="text" name="review_id"></p>
-  <input class="btn btn-primary" type="submit" value="submit"><br>
-</form>
+
 <br>
 
 <% current_user.reviews.each do |r| %>
     <br>
     <li> <%= r.content %> </li>
     <li> Student: <%= r.student.name %></li> 
-    <li> Review ID: <%= r.id %> </li> <br>
+    <li> Review ID: <%= r.id %> </li> 
+    <a href="/reviews/edit/<%= r.id %>">Edit</a><br>
 <% end %>

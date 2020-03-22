@@ -38,13 +38,20 @@ class ReviewsController < ApplicationController
 
     post '/reviews/edit' do 
         @review = Review.find_by_id(params[:review_id])
-        erb :'/reviews/editing'
+        redirect to '/reviews/edit/:id'
     end
 
-    post '/reviews/editing' do
-        @review = Review.find_by_id(params[:review_id])
-        erb :'/reviews/editing'
-    end
+    # post '/reviews/edit/:id' do
+    #     @review = Review.find_by_id(params[:review_id])
+    #     # @review.update(content: params[:new_content])
+
+    #     redirect to '/reviews/edit'
+    # end
+
+    # get '/reviews/edit/:id' do
+    #     @review = Review.find_by(params[:id])
+    #     erb :'reviews/editing'
+    # end
 
 
 
