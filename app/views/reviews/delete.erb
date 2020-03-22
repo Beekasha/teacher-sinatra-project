@@ -1,0 +1,12 @@
+<h3>Are you sure you want to delete this post about <%= @review.student.name %>?</h3>
+
+<p> <%= @review.content %> </p>
+
+<form method="post" action="/reviews/edit/<%=@review.id%>/delete">
+  <input id="hidden" type="hidden" name="_delete" value="PATCH">
+  <input id="hidden" type="hidden" name="review_id" value="<% @review.id %>">
+  <input type="submit" value="Confirm">
+</form>
+
+
+<a href="/reviews/edit">Look at all your reviews</a>

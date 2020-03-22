@@ -82,10 +82,21 @@ class ReviewsController < ApplicationController
         end
     end
 
-    
-
     get '/reviews/edit/:id/delete' do
-        "Hello World"
+        @review = Review.find_by_id(params[:id  ])
+        erb :'/reviews/delete'
+    end
+
+    post '/reviews/edit/:id/delete' do
+        if logged_in?
+            @review = Review.find_by_id(params[:id])
+            if @review.teacher == current_user
+                @review.delete
+            end
+            redirect to '/reviews/edit'
+        else
+            redirect to '/login'
+        end
     end
 
 
