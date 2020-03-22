@@ -82,6 +82,12 @@ class ReviewsController < ApplicationController
         end
     end
 
+    
+
+    get '/reviews/edit/:id/delete' do
+        "Hello World"
+    end
+
 
 
 

@@ -8,5 +8,6 @@
     <li> <%= r.content %> </li>
     <li> Student: <%= r.student.name %></li> 
     <li> Review ID: <%= r.id %> </li> 
-    <a href="/reviews/edit/<%= r.id %>">Edit</a><br>
+    <a href="/reviews/edit/<%= r.id %>">Edit</a>
+    <a href="/reviews/edit/<%= r.id %>/delete">Delete</a><br>
 <% end %>
