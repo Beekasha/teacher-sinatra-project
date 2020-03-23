@@ -4,6 +4,8 @@ This is a tool that was originally built to help special education teachers keep
 
 The main page is essentially a twitter feed off all the notable things happening to your specific students only. If a student is not in any of the classes that you teach, you will not be able to view information on them. 
 
+Run 'bundle install' in order to stall any dependencies you may need for this app. Then, run 'shotgun' and navigate to your local server. 
+
 
 
 Copyright <YEAR> <COPYRIGHT HOLDER>
