@@ -1,6 +1,6 @@
 <h2> Edit Note for <%= @review.student.name %></h2>
 
-<form method="post" action="/teachers/<%=@review.teacher.id%>/reviews">
+<form method="post" action="/teachers/<%=@review.teacher.id%>/reviews/<%=@review.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
   <input id="hidden" type="hidden" name="review_id" value="<%= @review.id %>">
   <input type="text" name="content" value="<%= @review.content %>" >

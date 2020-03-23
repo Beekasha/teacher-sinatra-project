@@ -89,6 +89,7 @@ class ReviewsController < ApplicationController
         @teacher = Teacher.find_by_id(params[:teacher_id])
         @review = Review.find_by_id(params[:review_id])
         @student = @review.student
+        @review.update(content: params[:content])
         redirect to '/teachers/:teacher_id/reviews'
     end
 
