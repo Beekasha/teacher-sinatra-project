@@ -1,3 +1,11 @@
+This is my second module project (Sinatra) for Flatiron School.
+
+This is a tool that was originally built to help special education teachers keep track of their students' behavior throughout the school day. Teachers can write reviews, or anecdotes, about a specific child. If another teacher has that child as a student, they will be able to see the review as well. 
+
+The main page is essentially a twitter feed off all the notable things happening to your specific students only. If a student is not in any of the classes that you teach, you will not be able to view information on them. 
+
+
+
 Copyright <YEAR> <COPYRIGHT HOLDER>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
