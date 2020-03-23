@@ -1,6 +1,11 @@
 class TeachersController < ApplicationController
+    
     get '/signup' do
-        erb :"teachers/signup"
+        if !logged_in?
+            erb :"teachers/signup"
+        else
+            redirect to '/account'
+        end
     end
 
 
