@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
                 @student = Student.find_by_name(params[:student_name])
                 @review = current_user.reviews.build(content: params[:content], student_id: @student.id) #need to get student choice
                 if @review.save
-                    redirect to 'teachers/<%= @review.teacher.id %>/reviews'
+                    redirect to 'teachers/:teacher_id/reviews'
                 else
                     redirect to "/reviews/new"
                 end
