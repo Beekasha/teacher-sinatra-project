@@ -6,8 +6,8 @@
 <% revs.each do |r| %>
     <% if current_user.students.include?(r.student) %>
         <li> <%= r.content %> </li>
-        <li> Educator: <%= r.teacher.name %></li>
-        <li> Student: <%= r.student.name %></li> <br>
+        <li><b> Educator: </b><%= r.teacher.name %></li>
+        <li><b> Student: </b><%= r.student.name %></li> <br>
     <% else %>
         <br>
     <% end %>
