@@ -2,10 +2,11 @@
 
 <p> <%= @review.content %> </p>
 
-<form method="post" action="/reviews/edit/<%=@review.id%>/delete">
+<form method="post" action='/teachers/<%= @review.teacher.id %>/reviews/<%= @review.id %>/delete'>
   <input id="hidden" type="hidden" name="_delete" value="PATCH">
   <input type="submit" value="Confirm">
 </form>
 
 
-<a href="/reviews/edit">Look at all your reviews</a>
+<a href='/teachers/<%=current_user.id%>/reviews'>Look at all your reviews</a>
+
