@@ -12,7 +12,7 @@ class TeachersController < ApplicationController
 
 
     post '/signup' do 
-        if params[:name] == "" #|| params[:username] == "" || params[:password] = ""
+        if params[:username] == "" || Teacher.all.collect{|teacher| teacher.username}.include?(params[:username])
             redirect to '/signup'
         else
             @teacher = Teacher.new(:name => params[:name], :username => params[:username], :password => params[:password])
