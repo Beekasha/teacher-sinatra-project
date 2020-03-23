@@ -4,7 +4,7 @@
 <p>
 <% current_user.students.sort_by{|student| student.name}.each do |s| %>
   <div>
-    <a href="/students/<%= s.slug %>"><%= s.name %></a> 
+    <a href="/students/<%= s.slug %>/reviews"><%= s.name %></a> 
   </div>
 <% end %><br>
 <a href="/account">Go Home</a><br>

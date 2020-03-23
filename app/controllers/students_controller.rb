@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
         erb :"students/show"
     end
 
-    get '/students/:slug' do
+    get '/students/:slug/reviews' do
         @student = Student.find_by_slug(params[:slug])
         erb :"reviews/individual"
     end
