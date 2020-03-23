@@ -6,8 +6,7 @@
 <% current_user.reviews.each do |r| %>
     <br>
     <li> <%= r.content %> </li>
-    <li> Student: <%= r.student.name %></li> 
-    <li> Review ID: <%= r.id %> </li> 
-    <a href="/reviews/edit/<%= r.id %>">Edit</a>
-    <a href="/reviews/edit/<%= r.id %>/delete">Delete</a><br>
+    <b><li> Student: </b><%= r.student.name %></li>
+    <b><a href="/reviews/edit/<%= r.id %>">Edit</a></b>
+    <b><a href="/reviews/edit/<%= r.id %>/delete">Delete</a></b><br>
 <% end %>
