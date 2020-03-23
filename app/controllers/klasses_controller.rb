@@ -1,18 +1,29 @@
 class KlassesController < ApplicationController
 
     get '/classes' do
-        erb :'klasses/show'
+        if logged_in?
+            erb :'klasses/show'
+        else
+            redirect to '/login'
+        end
     end
     
     post '/classes' do #might have some trouble here
-
-        redirect to '/classroom'
+        if logged_in?
+            redirect to '/classroom'
+        else
+            redirect to '/login'
+        end
         
     end
 
     get '/classroom/:slug' do
-        @klass = Klass.find_by_slug(params[:slug])
-        erb :'klasses/classroom'
+        if logged_in?
+            @klass = Klass.find_by_slug(params[:slug])
+            erb :'klasses/classroom'
+        else
+            redirect to '/login'
+        end
     end
 
 

@@ -1,15 +1,27 @@
 class ReviewsController < ApplicationController
     get '/reviews' do
-        erb :'reviews/reviews'
+        if logged_in?
+            erb :'reviews/reviews'
+        else
+            redirect to '/login'
+        end
     end
 
     post '/individual_reviews' do
-        @student_name = params[:student_name]
-        erb :'reviews/individual'
+        if logged_in?
+            @student_name = params[:student_name]
+            erb :'reviews/individual'
+        else
+            redirect to '/login'
+        end
     end
 
     get '/reviews/new' do
-        erb :'reviews/new'
+        if logged_in?
+            erb :'reviews/new'
+        else
+            redirect to '/login'
+        end
     end
 
     post '/reviews' do
@@ -28,26 +40,37 @@ class ReviewsController < ApplicationController
                 end
             end
         else
-        redirect to '/login'
+            redirect to '/login'
         end
     end
 
     get '/teachers/:id/reviews' do
-        @teacher = Teacher.find_by_id(params[:id])
-        erb :'reviews/edit' 
+        if logged_in?
+            @teacher = Teacher.find_by_id(params[:id])
+            erb :'reviews/edit' 
+        else
+            redirect to '/login'
+        end
     end
 
     post '/reviews' do 
-        @review = Review.find_by_id(params[:review_id])
-        #redirect to '/teachers/:teacher_id/reviews/:review_id'
+        if logged_in?
+            @review = Review.find_by_id(params[:review_id])
+        else
+            redirect to '/login'
+        end
     end
 
     post '/teachers/:teacher_id/reviews' do
-        @review = Review.find_by(id: params[:review_id])
-        @teacher = Teacher.find_by(id: params[:teacher_id])
-        # @review.update(content: params[:content])
+        if logged_in?
+            @review = Review.find_by(id: params[:review_id])
+            @teacher = Teacher.find_by(id: params[:teacher_id])
+            # @review.update(content: params[:content])
 
-        redirect to 'teachers/:teacher_id/reviews'
+            redirect to 'teachers/:teacher_id/reviews'
+        else
+            redirect to '/login'
+        end
     end
 
     get '/teachers/:teacher_id/reviews/:review_id' do
@@ -86,11 +109,15 @@ class ReviewsController < ApplicationController
     end
 
     post '/teachers/:teacher_id/reviews/:review_id' do
-        @teacher = Teacher.find_by_id(params[:teacher_id])
-        @review = Review.find_by_id(params[:review_id])
-        @student = @review.student
-        @review.update(content: params[:content])
-        redirect to '/teachers/:teacher_id/reviews'
+        if logged_in?
+            @teacher = Teacher.find_by_id(params[:teacher_id])
+            @review = Review.find_by_id(params[:review_id])
+            @student = @review.student
+            @review.update(content: params[:content])
+            redirect to '/teachers/:teacher_id/reviews'
+        else
+            redirect to '/login'
+        end
     end
 
 
