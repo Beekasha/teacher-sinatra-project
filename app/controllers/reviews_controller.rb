@@ -32,11 +32,11 @@ class ReviewsController < ApplicationController
         end
     end
 
-    get '/reviews/edit' do
+    get '/reviews' do
         erb :'reviews/edit'
     end
 
-    post '/reviews/edit' do 
+    post '/reviews' do 
         @review = Review.find_by_id(params[:review_id])
         #redirect to '/reviews/edit/:id'
     end
@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
         @review = Review.find_by_id(params[:id])
         @review.update(content: params[:content])
 
-        redirect to '/reviews/edit'
+        redirect to '/reviews'
     end
 
     get '/reviews/edit/:id' do
@@ -61,11 +61,11 @@ class ReviewsController < ApplicationController
         end
     end
 
-    patch '/reviews/edit' do
+    patch '/reviews' do
         if logged_in?
             @review = Review.find_by_id(params: [:review_id])
             if params[:content] == ""
-                redirect to '/reviews/edit'
+                redirect to '/reviews'
             else
                 if @review.teacher == current_user
                     if @review.update(content: params[:content])
@@ -93,7 +93,7 @@ class ReviewsController < ApplicationController
             if @review.teacher == current_user
                 @review.delete
             end
-            redirect to '/reviews/edit'
+            redirect to '/reviews'
         else
             redirect to '/login'
         end
