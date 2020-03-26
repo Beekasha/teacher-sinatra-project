@@ -53,7 +53,7 @@ end
 
 # Create student reviews
 Teacher.all.each do |t|
-  10.times do
+  20.times do
     review = Faker::Movies::BackToTheFuture.quote
     Review.create(content: review, student_id: (rand(1..Student.all.count)), teacher_id: t.id)
   end
