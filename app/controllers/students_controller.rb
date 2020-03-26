@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
     get '/students/:slug/reviews' do
         if logged_in?
             @student = Student.find_by_slug(params[:slug])
-            erb :"reviews/individual"
+            erb :"reviews/show"
         else
             redirect to '/login'
         end

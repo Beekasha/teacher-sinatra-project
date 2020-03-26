@@ -1,0 +1,14 @@
+<h2> <%= current_user.name %>'s Reviews </h2>
+
+
+<br>
+
+<% current_user.reviews.each do |r| %>
+    <br>
+    <li> <%= r.content %> </li>
+    <b><li> Student: </b><%= r.student.name %></li>
+    <b><a href="/reviews/<%= r.id %>">Edit</a></b>
+    <b><a href="/teachers/<%=r.teacher.id%>/reviews/<%=r.id%>/delete">Delete</a></b><br>
+<% end %><br>
+
+<a href="/account">Go Home</a><br>

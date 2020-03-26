@@ -2,8 +2,8 @@
 
 <p> <%= @review.content %> </p>
 
-<form method="post" action='/teachers/<%= @review.teacher.id %>/reviews/<%= @review.id %>/delete'>
-  <input id="hidden" type="hidden" name="_delete" value="PATCH">
+<form method="post" action='/teachers/<%= @review.teacher.id %>/reviews/<%= @review.id %>'>
+  <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Confirm">
 </form>
 

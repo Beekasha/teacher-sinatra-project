@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     post '/individual_reviews' do
         if logged_in?
             @student_name = params[:student_name]
-            erb :'reviews/individual'
+            erb :'reviews/show'
         else
             redirect to '/login'
         end
@@ -26,15 +26,13 @@ class ReviewsController < ApplicationController
 
     post '/reviews' do
         if logged_in?
-            if params[:content] == ""
-                redirect to "/reviews/new"
+            if params[:content] == "" || !(@student = Student.find_by_name(params[:student_name]))
+                @error = "no!"
+                erb :"/reviews/new"
             else
-          
-
-                @student = Student.find_by_name(params[:student_name])
-                @review = current_user.reviews.build(content: params[:content], student_id: @student.id) #need to get student choice
-                if @review.save
-                    redirect to 'teachers/:teacher_id/reviews'
+                review = current_user.reviews.build(content: params[:content], student_id: @student.id) #need to get student choice
+                if review.save
+                    redirect to "teachers/#{current_user.id}/reviews"
                 else
                     redirect to "/reviews/new"
                 end
@@ -47,7 +45,7 @@ class ReviewsController < ApplicationController
     get '/teachers/:id/reviews' do
         if logged_in?
             @teacher = Teacher.find_by_id(params[:id])
-            erb :'reviews/edit' 
+            erb :'reviews/index' 
         else
             redirect to '/login'
         end
@@ -67,18 +65,17 @@ class ReviewsController < ApplicationController
             @teacher = Teacher.find_by(id: params[:teacher_id])
             # @review.update(content: params[:content])
 
-            redirect to 'teachers/:teacher_id/reviews'
+            redirect to "teachers/#{@teacher.id}/reviews"
         else
             redirect to '/login'
         end
     end
 
-    get '/teachers/:teacher_id/reviews/:review_id' do
+    get '/reviews/:id' do
         if logged_in?
-            @teacher = Teacher.find_by(id: params[:teacher_id])
-            @review = Review.find_by(id: params[:review_id])
-            if @teacher == current_user
-                erb :'reviews/editing'
+            @review = Review.includes(:teacher).find(params[:id])
+            if current_user == @review.teacher
+                erb :'reviews/edit'
             else
                 redirect to '/account'
             end
@@ -89,13 +86,14 @@ class ReviewsController < ApplicationController
 
     patch '/teachers/:teacher_id/reviews/:review_id' do
         if logged_in?
-            @review = Review.find_by_id(params: [:review_id])
+            review = Review.includes(:teacher).find_by_id(params[:review_id])
+            teacher_id = review.teacher.id
             if params[:content] == ""
-                redirect to 'teachers/:teacher_id/reviews'
+                redirect to "teachers/#{teacher_id}/reviews"
             else
-                if @review.teacher == current_user
-                    if @review.update(content: params[:content])
-                        erb :"/reviews/edit"
+                if teacher_id == current_user.id
+                    if review.update(content: params[:content])
+                        redirect to "/teachers/#{teacher_id}/reviews"
                     else
                         redirect to '/account'
                     end
@@ -107,46 +105,21 @@ class ReviewsController < ApplicationController
         redirect to '/login'
         end
     end
-
-    post '/teachers/:teacher_id/reviews/:review_id' do
-        if logged_in?
-            @teacher = Teacher.find_by_id(params[:teacher_id])
-            @review = Review.find_by_id(params[:review_id])
-            @student = @review.student
-            @review.update(content: params[:content])
-            redirect to '/teachers/:teacher_id/reviews'
-        else
-            redirect to '/login'
-        end
-    end
-
-
-
-
-
-
-
-
     
     get '/teachers/:teacher_id/reviews/:review_id/delete' do
         @review = Review.find_by_id(params[:review_id])
         erb :'/reviews/delete'
     end
 
-    post '/teachers/:teacher_id/reviews/:review_id/delete' do
+    delete '/teachers/:teacher_id/reviews/:review_id' do
         if logged_in?
-            @review = Review.find_by_id(params[:review_id])
-            if @review.teacher == current_user
-                @review.delete
+            review = Review.find_by_id(params[:review_id])
+            if review.teacher == current_user
+                review.delete
             end
-            redirect to '/teachers/:teacher_id/reviews'
+            redirect to "/teachers/#{review.teacher.id}/reviews"
         else
             redirect to '/login'
         end
     end
-
-
-
-
-
 end

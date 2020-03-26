@@ -1,14 +1,14 @@
-<h2> <%= current_user.name %>'s Reviews </h2>
+<h2> Edit Note for <%= @review.student.name %></h2>
+
+<form method="post" action="/teachers/<%=@review.teacher.id%>/reviews/<%=@review.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <input id="hidden" type="hidden" name="review_id" value="<%= @review.id %>">
+  <input type="text" name="content" value="<%= @review.content %>" >
+  <input type="submit" value="submit">
+</form>
 
 
-<br>
 
-<% current_user.reviews.each do |r| %>
-    <br>
-    <li> <%= r.content %> </li>
-    <b><li> Student: </b><%= r.student.name %></li>
-    <b><a href="/teachers/<%= r.teacher.id %>/reviews/<%= r.id %>">Edit</a></b>
-    <b><a href="/teachers/<%=r.teacher.id%>/reviews/<%=r.id%>/delete">Delete</a></b><br>
-<% end %><br>
 
 <a href="/account">Go Home</a><br>
+
